@@ -6,12 +6,12 @@ namespace Controle_de_Gastos_Residenciais.Models.DTOs
     {
         [Required]
         public decimal Valor { get; set; }
-
+       
         [Required]
         public DateTime Data { get; set; }
 
         [MaxLength(250)]
-        public string Nome { get; set; }
+        public string Descricao { get; set; }
 
         [Required]
         public int PessoaId { get; set; }

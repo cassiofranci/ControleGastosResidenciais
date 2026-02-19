@@ -1,6 +1,2 @@
 @Controle_de_Gastos_Residenciais_HostAddress = http://localhost:5178
 
-GET {{Controle_de_Gastos_Residenciais_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###

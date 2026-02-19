@@ -38,7 +38,7 @@ namespace Controle_de_Gastos_Residenciais.Services
             {
                 Valor = dto.Valor,
                 Data = dto.Data,
-                Descricao = dto.Nome,
+                Descricao = dto.Descricao,
                 PessoaId = dto.PessoaId,
                 CategoriaId = dto.CategoriaId
             };
@@ -51,7 +51,7 @@ namespace Controle_de_Gastos_Residenciais.Services
                 Id = transacao.Id,
                 Valor = transacao.Valor,
                 Data = transacao.Data,
-                Nome = transacao.Descricao,
+                Descricao = transacao.Descricao,
                 PessoaNome = pessoa.Nome,
                 CategoriaDescricao = categoria.Descricao,
                 CategoriaFinalidade = categoria.Finalidade
@@ -77,7 +77,7 @@ namespace Controle_de_Gastos_Residenciais.Services
                     Id = t.Id,
                     Valor = t.Valor,
                     Data = t.Data,
-                    Nome = t.Descricao,
+                    Descricao = t.Descricao,
                     PessoaNome = t.Descricao,
                     CategoriaDescricao = t.Descricao            
                 })
@@ -95,7 +95,7 @@ namespace Controle_de_Gastos_Residenciais.Services
                 Id = transacao.Id,
                 Valor = transacao.Valor,
                 Data = transacao.Data,
-                Nome = transacao.Descricao,
+                Descricao = transacao.Descricao,
                 PessoaNome = transacao.Descricao,
                 CategoriaDescricao = transacao.Descricao          
             };

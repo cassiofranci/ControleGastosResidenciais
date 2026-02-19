@@ -16,13 +16,11 @@ namespace Controle_de_Gastos_Residenciais.Models
         [MaxLength(400)]
         public string Descricao { get; set; }
 
-     
-        [ForeignKey("Pessoa")]
+        //Chave estrangeira - pessoa
         public int PessoaId { get; set; }
         public Pessoa Pessoa { get; set; }
 
-     
-        [ForeignKey("Categoria")]
+        //Chave estrangeira - categoria
         public int CategoriaId { get; set; }
         public Categoria Categoria { get; set; }
 
