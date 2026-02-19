@@ -14,7 +14,7 @@ namespace Controle_de_Gastos_Residenciais.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            // configuracoes para a entidade Pessoa, definindo o tamanho e obrigatoriedade do campo nome
+            //configuracoes para a entidade Pessoa, definindo o tamanho e obrigatoriedade do campo nome
             modelBuilder.Entity<Pessoa>()
                .Property(p => p.Nome)
                .HasMaxLength(200)
