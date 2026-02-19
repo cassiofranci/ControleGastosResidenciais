@@ -4,5 +4,5 @@
 *.user
 *.bak
 *.suo
-appsettings.Development.json
-appsettings.json
+
+ControleGastosResidenciais/appsettings.Development.json
