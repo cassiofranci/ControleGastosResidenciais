@@ -1,10 +1,12 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
 import Home from "./pages/Home";
-import CadastroPessoa from "./pages/CadastroPessoas";
-import ConsultaPessoa from "./pages/ConsultaPessoas";
-import CadastroCategoria from "./pages/CadastroCategorias";
-import CadastroTransacoes from "./pages/CadastroTransacoes";
+import CadastroPessoa from "./pages/pessoas/CadastroPessoas";
+import Pessoa from "./pages/pessoas/Pessoas";
+import Transacao from "./pages/transacoes/Transacao";
+import Categoria from "./pages/categorias/Categoria";
+import CadastroCategoria from "./pages/categorias/CadastroCategorias";
+import CadastroTransacoes from "./pages/transacoes/CadastroTransacoes";
 
 function App() {
   return (
@@ -13,15 +15,15 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
 
-          {/* Cadastro */}
-          <Route path="cadastro/pessoas" element={<CadastroPessoa />} />
+          {/* Cadastro
+          <Route path="cadastro/pessoas" element={<CadastroPessoa/>} />
           <Route path="cadastro/categorias" element={<CadastroCategoria/>} />
-          <Route path="cadastro/transacoes" element={<CadastroTransacoes/>} />
+          <Route path="cadastro/transacoes" element={<CadastroTransacoes/>} /> */}
 
-          {/* Consulta */}
-          <Route path="consulta/pessoas" element={<ConsultaPessoa />} />
-          <Route path="consulta/categorias" element={<div>Consultar Categoria</div>} />
-          <Route path="consulta/transacoes" element={<div>Consultar Transação</div>} />
+          {/* Itens principais */}
+          <Route path="pessoas" element={<Pessoa />} />
+          <Route path="categorias" element={<Categoria />} />
+          <Route path="transacoes" element={<Transacao />} />
         </Route>
       </Routes>
     </BrowserRouter>

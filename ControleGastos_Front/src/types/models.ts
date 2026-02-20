@@ -19,3 +19,12 @@ export interface Transacao {
     pessoaId: number;
     categoriaId: number;
 }
+export interface TransacaoRetorno {
+    id: number;
+    valor: number;
+    data: string;
+    descricao: string;
+    pessoaNome: string;
+    categoriaDescricao: string;
+    categoriaFinalidade: string;
+}

@@ -15,9 +15,9 @@ namespace Controle_de_Gastos_Residenciais.Services
 
         public CategoriaRespostaDto Criar(CategoriaCriacaoDto dto)
         {
-            //Realizo a validação do Tipo
+            //Realizo a validação da Finalidade
             if (dto.Finalidade != "Receita" && dto.Finalidade != "Despesa")
-                throw new Exception("Tipo deve ser 'Receita' ou 'Despesa'");
+                throw new Exception("Finalidade deve ser 'Receita' ou 'Despesa'");
 
             var categoria = new Categoria
             {

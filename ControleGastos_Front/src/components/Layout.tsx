@@ -2,9 +2,8 @@ import { Link, Outlet } from "react-router-dom";
 import { useState, useEffect } from "react";
 import "./Layout.css";
 
-export default function Layout() {
-  const [openCadastro, setOpenCadastro] = useState(false);
-  const [openConsulta, setOpenConsulta] = useState(false);
+export default function Layout() { 
+  const [openRelatorios, setOpenRelatorios] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
 
   useEffect(() => {
@@ -26,40 +25,26 @@ export default function Layout() {
         
         <h2>Controle de Gastos</h2>
 
-        <Link to="/">Home</Link>
-
-        {/* Cadastro */}
+        <Link to="/">Home</Link>   
+       
+        <Link to="/pessoas">Pessoas</Link>
+        <Link to="/categorias">Categorias</Link>
+        <Link to="/transacoes">Transações</Link>
+        
+    
+        {/* Consultas */}
         <div>
           <button
             className="submenu-btn"
-            onClick={() => setOpenCadastro(!openCadastro)}
+            onClick={() => setOpenRelatorios(!openRelatorios)}
           >
-            Cadastro
+            Relatórios
           </button>
 
-          {openCadastro && (
+          {openRelatorios && (
             <div className="submenu">
-              <Link to="/cadastro/pessoas">Pessoas</Link>
-              <Link to="/cadastro/categorias">Categorias</Link>
-              <Link to="/cadastro/transacoes">Transações</Link>
-            </div>
-          )}
-        </div>
-
-        {/* Consulta */}
-        <div>
-          <button
-            className="submenu-btn"
-            onClick={() => setOpenConsulta(!openConsulta)}
-          >
-            Consulta
-          </button>
-
-          {openConsulta && (
-            <div className="submenu">
-              <Link to="/consulta/pessoas">Pessoas</Link>
-              <Link to="/consulta/categorias">Categorias</Link>
-              <Link to="/consulta/transacoes">Transações</Link>
+              <Link to="/relatorios/totaisPorPessoas">Por Pessoa</Link>
+              <Link to="/relatorios/categorias">Por Categorias</Link>              
             </div>
           )}
         </div>

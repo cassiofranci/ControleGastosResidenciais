@@ -78,8 +78,9 @@ namespace Controle_de_Gastos_Residenciais.Services
                     Valor = t.Valor,
                     Data = t.Data,
                     Descricao = t.Descricao,
-                    PessoaNome = t.Descricao,
-                    CategoriaDescricao = t.Descricao            
+                    PessoaNome = t.Pessoa.Nome,
+                    CategoriaDescricao = t.Categoria.Descricao,
+                    CategoriaFinalidade = t.Categoria.Finalidade
                 })
                 .ToList();
         }
@@ -96,8 +97,9 @@ namespace Controle_de_Gastos_Residenciais.Services
                 Valor = transacao.Valor,
                 Data = transacao.Data,
                 Descricao = transacao.Descricao,
-                PessoaNome = transacao.Descricao,
-                CategoriaDescricao = transacao.Descricao          
+                PessoaNome = transacao.Pessoa.Nome,
+                CategoriaDescricao = transacao.Categoria.Descricao,
+                CategoriaFinalidade = transacao.Categoria.Finalidade
             };
         }
     }

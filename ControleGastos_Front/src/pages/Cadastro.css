@@ -71,3 +71,19 @@ h1 {
 .delete:hover {
   background-color: #dc2626;
 }
+
+.sucesso {
+  background-color: #d4edda;
+  color: #155724;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+.erro {
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
