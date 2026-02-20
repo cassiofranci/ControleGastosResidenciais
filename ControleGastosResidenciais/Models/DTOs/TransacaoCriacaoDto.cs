@@ -3,7 +3,7 @@
 namespace Controle_de_Gastos_Residenciais.Models.DTOs
 {
     public class TransacaoCriacaoDto
-    {
+    {       
         [Required]
         public decimal Valor { get; set; }
        

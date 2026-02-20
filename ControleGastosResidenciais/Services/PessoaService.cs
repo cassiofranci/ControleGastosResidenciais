@@ -13,13 +13,13 @@ namespace Controle_de_Gastos_Residenciais.Services
             _context = context;
         }
 
-        public PessoaRespostaDto Criar(PessoaCriacaoDto dto)
+        public PessoaRespostaDto Criar(PessoaCriacaoDto pessoaCriacaoDto)
         {
             //Recebo os dados do usuario pelo DTO de criacao e retorno pelo DTO de resposta, para evitar a exposição do Model
             var pessoa = new Pessoa
             {
-                Nome = dto.Nome,
-                DataNascimento = dto.DataNascimento
+                Nome = pessoaCriacaoDto.Nome,
+                DataNascimento = pessoaCriacaoDto.DataNascimento
             };
 
             _context.Pessoas.Add(pessoa);
@@ -35,7 +35,7 @@ namespace Controle_de_Gastos_Residenciais.Services
 
         public List<PessoaRespostaDto> Listar()
         {
-            //Realiza a listagem de todos as pessoas, retornando a DTO  de resposta
+            //Realiza a listagem de todos as pessoas, retornando a lista de DTO  de resposta
             return _context.Pessoas
                 .Select(u => new PessoaRespostaDto
                 {
@@ -44,6 +44,26 @@ namespace Controle_de_Gastos_Residenciais.Services
                     DataNascimento = u.DataNascimento
                 })
                 .ToList();
+        }
+
+        public PessoaRespostaDto? Editar(int id, PessoaCriacaoDto pessoaCriacaoDto)
+        {
+            //Realiza a edicao da pessoa, retornando a DTO de resposta            
+            var pessoa = _context.Pessoas.Find(id);
+            if (pessoa == null) return null;
+
+            pessoa.Nome = pessoaCriacaoDto.Nome;
+            pessoa.DataNascimento = pessoaCriacaoDto.DataNascimento;
+
+            _context.Pessoas.Update(pessoa);
+            _context.SaveChanges();
+
+            return new PessoaRespostaDto
+            {
+                Id = pessoa.Id,
+                Nome = pessoa.Nome,
+                DataNascimento = pessoa.DataNascimento
+            };
         }
 
         public PessoaRespostaDto? BuscarPorId(int id)

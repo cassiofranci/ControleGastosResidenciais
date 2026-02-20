@@ -7,17 +7,19 @@ export const api = axios.create({
 //Incluido um interceptor para tratamento das mensagens de erro
 api.interceptors.response.use(
   (response) => response,
-  (error) => {   
+  (error) => {
     if (!error.response) {
       alert("Servidor indisponível. Tente novamente.");
+      return Promise.reject(error);
     }
     else {
-      const status = error.response.status;
+      const status = error.response.status;   
+      const data = error.response.data;
 
       switch (status) {
         case 400:
-          alert("Requisição inválida.");
-          break;
+        alert(error.response.data);        
+        break;
         case 401:
           alert("Não autorizado.");
           break;

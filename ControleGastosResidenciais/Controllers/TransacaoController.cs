@@ -25,7 +25,7 @@ namespace Controle_de_Gastos_Residenciais.Controllers
             }
             catch (Exception ex)
             {
-                return BadRequest(new { mensagem = ex.Message });
+                return BadRequest(ex.Message);
             }
         }
 

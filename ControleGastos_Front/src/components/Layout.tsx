@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import "./Layout.css";
 
 export default function Layout() { 
-  const [openRelatorios, setOpenRelatorios] = useState(false);
+  const [openConsultas, setOpenConsultas] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
 
   useEffect(() => {
@@ -13,6 +13,8 @@ export default function Layout() {
   return (
     <div className="layout">      
       <nav className="menu">
+        
+        {/*  Retirei o modo escuro pois usei provisoriamente para testes
         <div>
               <button              
                   className="theme-btn btn btn-secondary"
@@ -21,8 +23,8 @@ export default function Layout() {
                   Tema
                   {darkMode ? " Claro" : " Escuro"}
                </button>
-        </div>
-        
+        </div> */}
+
         <h2>Controle de Gastos</h2>
 
         <Link to="/">Home</Link>   
@@ -36,15 +38,15 @@ export default function Layout() {
         <div>
           <button
             className="submenu-btn"
-            onClick={() => setOpenRelatorios(!openRelatorios)}
+            onClick={() => setOpenConsultas(!openConsultas)}
           >
-            Relatórios
+            Consultas
           </button>
 
-          {openRelatorios && (
+          {openConsultas && (
             <div className="submenu">
-              <Link to="/relatorios/totaisPorPessoas">Por Pessoa</Link>
-              <Link to="/relatorios/categorias">Por Categorias</Link>              
+              <Link to="/TotaisPorPessoa">Por Pessoa</Link>
+              <Link to="/TotaisPorCategoria">Por Categorias</Link>              
             </div>
           )}
         </div>

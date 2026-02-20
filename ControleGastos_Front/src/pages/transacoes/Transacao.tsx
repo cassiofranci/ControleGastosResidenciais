@@ -3,6 +3,8 @@ import { api } from "../../api/axios";
 import type { TransacaoRetorno } from "../../types/models";  
 import CadastroTransacoes from "./CadastroTransacoes";
 
+//Nessa tela utilizei as funcoes sendo executadas pelo filho e retornando os valores atualizados
+
 export default function ConsultaTransacao() {
   const [transacoes, setTransacoes] = useState<TransacaoRetorno[]>([]);  
   const [loading, setLoading] = useState(false);
@@ -11,22 +13,28 @@ export default function ConsultaTransacao() {
 
   useEffect(() => {
   carregar();  
-}, []);
-async function carregar() {
-  //incluindo um loading
-  setLoading(true);
-  setErro(null);
-  try {    
-    //Consumo das APIS para as funções da tela
-    const response = await api.get("/Transacao");
-    setTransacoes(response.data);
-  } catch{    
-    setErro("Erro ao carregar transações.")
+  }, []);
+  async function carregar() {
+    //incluindo um loading
+    setLoading(true);
+    setErro(null);
+    try {    
+      //Consumo das APIS para as funções da tela
+      const response = await api.get("/Transacao");
+      setTransacoes(response.data);
+    } catch{    
+      setErro("Erro ao carregar transações.")
+    }
+    finally {
+        setLoading(false);
+    }
   }
-  finally {
-      setLoading(false);
+  //fechando o modal e atualizando a grid com os valores atualizados
+  function fecharModal() {
+    setShowCadastro(false);
+    carregar();
   }
-}
+
   return (
     <div className="container mt-4">
       <div className="card shadow">
@@ -93,7 +101,7 @@ async function carregar() {
                         ></button>
                       </div>
                       <div className="modal-body">
-                        <CadastroTransacoes />
+                        <CadastroTransacoes onSucesso={fecharModal} />
                       </div>
                     </div>
                   </div>

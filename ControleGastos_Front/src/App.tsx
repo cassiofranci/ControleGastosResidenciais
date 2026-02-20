@@ -1,12 +1,11 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
 import Home from "./pages/Home";
-import CadastroPessoa from "./pages/pessoas/CadastroPessoas";
 import Pessoa from "./pages/pessoas/Pessoas";
 import Transacao from "./pages/transacoes/Transacao";
 import Categoria from "./pages/categorias/Categoria";
-import CadastroCategoria from "./pages/categorias/CadastroCategorias";
-import CadastroTransacoes from "./pages/transacoes/CadastroTransacoes";
+import ConsultaTotaisPessoa from "./pages/Consultas/ConsultaTotaisPessoa";
+import ConsultaTotaisCategoria from "./pages/Consultas/ConsultaTotaisCategoria";
 
 function App() {
   return (
@@ -14,16 +13,15 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
-
-          {/* Cadastro
-          <Route path="cadastro/pessoas" element={<CadastroPessoa/>} />
-          <Route path="cadastro/categorias" element={<CadastroCategoria/>} />
-          <Route path="cadastro/transacoes" element={<CadastroTransacoes/>} /> */}
-
+                    
           {/* Itens principais */}
           <Route path="pessoas" element={<Pessoa />} />
           <Route path="categorias" element={<Categoria />} />
           <Route path="transacoes" element={<Transacao />} />
+
+          {/* Itens Consulta */}
+          <Route path="TotaisPorPessoa" element={<ConsultaTotaisPessoa />} />
+          <Route path="TotaisPorCategoria" element={<ConsultaTotaisCategoria />} />
         </Route>
       </Routes>
     </BrowserRouter>

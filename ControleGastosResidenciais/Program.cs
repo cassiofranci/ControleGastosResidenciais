@@ -1,5 +1,6 @@
 using Controle_de_Gastos_Residenciais.Data;
 using Controle_de_Gastos_Residenciais.Services;
+using Controle_de_Gastos_Residenciais.Services.Interface;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -20,6 +21,8 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 builder.Services.AddScoped<PessoaService>();
 builder.Services.AddScoped<CategoriaService>();
 builder.Services.AddScoped<TransacaoService>();
+builder.Services.AddScoped<IConsultaService, ConsultaService>();
+
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowReact",

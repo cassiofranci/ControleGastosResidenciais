@@ -2,7 +2,12 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { api } from "../../api/axios";
 
-export default function CadastroTransacoes() {
+
+//interface criada para ao salvar atualizar a lista
+interface CadastroTransacoesProps {
+  onSucesso: () => void;
+}
+export default function CadastroTransacoes({ onSucesso }: CadastroTransacoesProps) {
   const [descricao, setDescricao] = useState("");
   const [valor, setValor] = useState("");
   const [data, setData] = useState("");
@@ -10,8 +15,6 @@ export default function CadastroTransacoes() {
   const [categoriaId, setCategoriaId] = useState("");
   const [pessoas, setPessoas] = useState<{ id: number; nome: string }[]>([]);
   const [categorias, setCategorias] = useState<{ id: number; descricao: string }[]>([]);
-
-
 
   useEffect(() => {
     carregarPessoas();
@@ -37,22 +40,29 @@ export default function CadastroTransacoes() {
       alert("Erro ao carregar categorias");
     }
   }
+
+  //convertendo os valores
   async function salvar() {
     try {
       await api.post("/Transacao", {
         descricao,
-        valor,
+        valor: Number(valor),
         data,
-        pessoaId,
-        categoriaId
+        pessoaId: Number(pessoaId),
+        categoriaId: Number(categoriaId)
       });
 
       alert("Transação cadastrada com sucesso!");
+
+      //limpando os campos
       setDescricao("");
       setValor("");
       setData("");
       setPessoaId("");
       setCategoriaId("");
+
+      //retorno para atualizar a lista
+      onSucesso();
     }
     catch {
     }
@@ -91,7 +101,7 @@ export default function CadastroTransacoes() {
           onChange={(e) => setData(e.target.value)}
         />
       </div>
-
+      {/* Utilizando a droplist para escolher o usuario pelo nome e salvando o id */}
       <div className="mb-3 col-md-6">
         <label className="form-label">Pessoa</label>
         <select
@@ -108,6 +118,8 @@ export default function CadastroTransacoes() {
         </select>
       </div>
 
+       {/* Utilizando a droplist para escolher a categoria pela descricao e salvando o id */}
+      <div className="mb-3 col-md-6"></div>
       <div className="mb-3 col-md-3">
         <label className="form-label">Categoria</label>
         <select
@@ -124,9 +136,10 @@ export default function CadastroTransacoes() {
         </select>
       </div>
 
-      <button className="btn btn-success" onClick={salvar}>
+      <button className="btn btn-success" onClick={salvar}>        
         Salvar
       </button>
+     
     </div>
   
   );

@@ -10,5 +10,6 @@ namespace Controle_de_Gastos_Residenciais.Models.DTOs
 
         [Required]
         public DateTime DataNascimento { get; set; }
+        public int? Id { get; set; }
     }
 }

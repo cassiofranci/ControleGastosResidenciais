@@ -1,6 +1,7 @@
 ﻿using Controle_de_Gastos_Residenciais.Data;
 using Controle_de_Gastos_Residenciais.Models;
 using Controle_de_Gastos_Residenciais.Models.DTOs;
+using Microsoft.AspNetCore.Http.HttpResults;
 
 namespace Controle_de_Gastos_Residenciais.Services
 {
@@ -31,7 +32,7 @@ namespace Controle_de_Gastos_Residenciais.Services
             int idade = CalcularIdade(pessoa.DataNascimento);
 
             //Validação da idade, para atender a regra que menor de idade não pode cadastrar receita
-            if (idade < 18 && categoria.Finalidade == "Receita")
+            if (idade < 18 && categoria.Finalidade == "Receita" || idade < 18 && categoria.Finalidade == "Ambas" && dto.Valor >= 0)
                 throw new Exception("Menor de idade não pode cadastrar receita.");
 
             var transacao = new Transacao

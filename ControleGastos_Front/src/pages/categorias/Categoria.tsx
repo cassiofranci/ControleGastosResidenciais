@@ -3,6 +3,8 @@ import { api } from "../../api/axios";
 import type { Categoria } from "../../types/models";
 import CadastroCategoria from "./CadastroCategorias";
 
+//Nessa tela utilizei as funcoes sendo executadas pelo filho e retornando os valores atualizados
+
 export default function ConsultaPessoa() {
   const [categorias, setCategoria] = useState<Categoria[]>([]);
   const [showCadastro, setShowCadastro] = useState(false);
@@ -16,10 +18,19 @@ export default function ConsultaPessoa() {
     setCategoria(response.data);
   }
 
-  async function excluir(id: number) {
-    await api.delete(`/Categoria/${id}`);
+  // async function excluir(id: number) {
+  //   const confirmar = window.confirm("Tem certeza que deseja excluir?");
+  //   if (!confirmar) return;
+  //   await api.delete(`/Categoria/${id}`);
+  //   carregar();
+  // }
+
+   //fechando o modal e atualizando a grid com os valores atualizados
+   function fecharModal() {
+    setShowCadastro(false);
     carregar();
   }
+
    
   return (
     <div className="container mt-4">
@@ -41,7 +52,7 @@ export default function ConsultaPessoa() {
               <tr>
                 <th>Descrição</th>
                 <th>Finalidade</th>
-                <th>Ações</th>
+                {/* <th>Ações</th> */}
               </tr>
             </thead>
             <tbody>
@@ -49,14 +60,14 @@ export default function ConsultaPessoa() {
                 <tr key={c.id}>
                   <td>{c.descricao}</td>
                   <td>{c.finalidade}</td>                  
-                  <td>
+                  {/* <td>
                     <button
                       className="btn btn-danger btn-sm"
                       onClick={() => excluir(c.id)}
                     >
                       Excluir
                     </button>
-                  </td>
+                  </td> */}
                 </tr>
               ))}
             </tbody>
@@ -75,7 +86,7 @@ export default function ConsultaPessoa() {
                       ></button>
                     </div>
                     <div className="modal-body">
-                      <CadastroCategoria />
+                      <CadastroCategoria onSucesso={fecharModal} />
                     </div>
                   </div>
                 </div>

@@ -1,7 +1,11 @@
 import { useState } from "react";
 import { api } from "../../api/axios";
 
-export default function CadastroCategoria() {
+//interface criada para ao salvar atualizar a lista
+interface CadastroCategoriaProps {
+  onSucesso: () => void;
+}
+export default function CadastroCategoria({ onSucesso }: CadastroCategoriaProps) {
   const [descricao, setDescricao] = useState("");
   const [finalidade, setFinalidade] = useState("");
 
@@ -15,6 +19,9 @@ export default function CadastroCategoria() {
     alert("Categoria cadastrada com sucesso!");
     setDescricao("");
     setFinalidade("");
+
+    //retorno para atualizar a lista
+    onSucesso();
 
     } 
     catch {     
@@ -42,6 +49,7 @@ export default function CadastroCategoria() {
           <option value="">Selecione...</option>
           <option value="Receita">Receita</option>
           <option value="Despesa">Despesa</option>
+          <option value="Ambas">Ambas</option>
         </select>
       </div>
 

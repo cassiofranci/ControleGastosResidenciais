@@ -32,11 +32,25 @@ namespace Controle_de_Gastos_Residenciais.Controllers
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {
-            var residente = _service.BuscarPorId(id);
-            if (residente == null)
+            var Pessoa = _service.BuscarPorId(id);
+            if (Pessoa == null)
                 return NotFound();
 
-            return Ok(residente);
+            return Ok(Pessoa);
+        }
+
+        [HttpPut("{id}")]
+        public IActionResult Put(int id, [FromBody] PessoaCriacaoDto pessoaCriacaoDto)
+        {
+            if (id != pessoaCriacaoDto.Id)
+            {
+                return BadRequest("O ID da url é diferente do ID do objeto.");
+            }
+            var Pessoa = _service.Editar(id, pessoaCriacaoDto);
+            if (Pessoa == null)
+                return NotFound();
+
+            return Ok(Pessoa);
         }
 
         [HttpDelete("{id}")]

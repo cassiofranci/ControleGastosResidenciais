@@ -28,3 +28,18 @@ export interface TransacaoRetorno {
     categoriaDescricao: string;
     categoriaFinalidade: string;
 }
+export interface TotaisPorPessoa {
+    pessoaId: number;
+    pessoaNome: string;
+    totalReceitas: number;
+    totalDespesas: number;
+    saldo: number;
+}
+
+export interface TotaisPorCategoria {
+    categoriaId: number;
+    categoriaDescricao: string;
+    totalReceitas: number;
+    totalDespesas: number;
+    saldo: number;
+}
